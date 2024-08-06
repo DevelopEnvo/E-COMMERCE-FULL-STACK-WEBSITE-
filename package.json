@@ -19,6 +19,7 @@
   "homepage": "https://github.com/DevelopEnvo/E-COMMERCE-FULL-STACK-WEBSITE-#readme",
   "dependencies": {
     "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
     "mongoose": "^8.5.2",
     "nodemon": "^3.1.4"
