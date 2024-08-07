@@ -41,15 +41,21 @@
             </form>
             <div class="my-3">
                 <% for(let review of foundProduct.reviews){ %>
-                    <div class="card">
+                    <div class="card mt-3 ">
+                        <p class="card-title mx-2">
+                            <% if(review.createdAt){ %>
+                                <%=review.createdAt.toDateString()%>
+                                
+                                <% } %>
+                            </p>
                         <p class="starability-result" data-rating="<%=review.rating %>">
                           Rated:<%=review.rating %> stars
                         </p>
                         <div class="card-body">
                           
                           <p class="card-text">Comment: <%=review.comment %></p>
-                          <a href="#" class="btn btn-primary">Go Delete</a>
                         </div>
+                            <a href="#" class="btn btn-primary"> Delete</a>
                       </div>
                 <%}%>
             </div>

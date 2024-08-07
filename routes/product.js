@@ -1,5 +1,6 @@
 const express = require('express');
-const Product = require('../models/Product')
+const Product = require('../models/Product');
+const Review = require('../models/Review');
 const router = express.Router(); //mini instance 
 
 
@@ -48,6 +49,12 @@ router.patch('/products/:id' , async(req,res)=>{
 //to delete a product
 router.delete('/products/:id' , async(req, res) => {
     let {id} = req.params;
+    const product = Product.findById(id);
+
+    // for(let id of product.reviews){
+    //     await Review.findByIdAndDelete(id);
+    // }
+
     await Product.findByIdAndDelete(id);
     res.redirect('/products');
 })
