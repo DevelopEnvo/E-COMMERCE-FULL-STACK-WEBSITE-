@@ -5,8 +5,12 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
         trim:true
+    },
+    role:{
+        type:String,
+        required:true,
     }
-});
+})
 
 
 userSchema.plugin(passportLocalMongoose);
