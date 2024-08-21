@@ -27,7 +27,11 @@ const productSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ]
+    ] ,
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 //middlewware jo behind the scene mongodb operations karvane pe use hota hai and iske andar pre and post middleware hote hain which are basically used over the schema and before the model is js class.

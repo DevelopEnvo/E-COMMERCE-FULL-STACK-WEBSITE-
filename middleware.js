@@ -27,4 +27,24 @@ const isLoggedIn = (req, res, next )=> {
     next();
 }
 
-module.exports = {isLoggedIn, validateReview, validateProduct}
+const isSeller = (req,res,next) => {
+    if(!req.user.role){
+        req.flash('error', 'You Do Not Have Access To Do This');
+        return res.redirect('/products');
+    }
+    else if(req.user.role !== 'seller'){
+        req.flash('error', 'You Do Not Have Access To Do This');
+        return res.redirect('/products');
+    }
+    next();
+}
+
+const isProductAuthor = (req, res, next) => {
+    
+}
+
+
+
+
+
+module.exports = { isSeller ,isLoggedIn, validateReview, validateProduct}
