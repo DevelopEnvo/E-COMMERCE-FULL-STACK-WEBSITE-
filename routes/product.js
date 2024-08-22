@@ -2,7 +2,7 @@ const express = require('express');
 const Product = require('../models/Product');
 const Review = require('../models/Review');
 const router = express.Router(); //mini instance 
-const {validateProduct, isLoggedIn,isSeller} = require('../middleware');
+const {validateProduct, isLoggedIn,isSeller, isProductAuthor} = require('../middleware');
 
 //to show all the products
 router.get('/products', isLoggedIn, async(req,res) =>{
@@ -76,7 +76,7 @@ router.patch('/products/:id' ,isLoggedIn , validateProduct ,async(req,res)=>{
 })
 
 //to delete a product
-router.delete('/products/:id' ,isLoggedIn,  async(req, res) => {
+router.delete('/products/:id' ,isLoggedIn, isProductAuthor, async(req, res) => {
     try{
         let {id} = req.params;
         const product = Product.findById(id);

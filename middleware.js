@@ -1,3 +1,4 @@
+const Product = require('./models/Product');
 const{productSchema, reviewSchema} = require('./schema')
 
 const validateProduct = (req,res,next)=>{
@@ -39,12 +40,18 @@ const isSeller = (req,res,next) => {
     next();
 }
 
-const isProductAuthor = (req, res, next) => {
-    
+const isProductAuthor = async(req, res, next) => {
+    let{id} = req.params; //product id
+    let product = await Product.findById(id); //entire product
+    if(!product.author.equals(req.user._id)){
+        req.flash('error', 'You are not the authorised user');
+        return res.redirect('/products');
+    }
+    next();
 }
 
 
 
 
 
-module.exports = { isSeller ,isLoggedIn, validateReview, validateProduct}
+module.exports = {isProductAuthor, isSeller ,isLoggedIn, validateReview, validateProduct}
