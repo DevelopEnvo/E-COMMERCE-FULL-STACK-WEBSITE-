@@ -16,7 +16,7 @@ const User = require('./models/User');
 const seedDB = require('./seed')
 const MongoStore = require('connect-mongo');
 
-const dbURL = process.env.dbURL || 'mongodb+srv://rajnishkumarrai8968:rai123@cluster0.u3e6g.mongodb.net/';
+const dbURL = process.env.dbURL || 'mongodb+srv://rajnishkumarrai8968:rai123@cluster0.u3e6g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.set('strictQuery', true);
 mongoose.connect(dbURL)
     .then(() => console.log('DB Connected'))
