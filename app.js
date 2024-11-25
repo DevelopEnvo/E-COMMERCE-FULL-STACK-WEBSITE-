@@ -96,7 +96,7 @@ app.use(productApi);
 app.use(paymentRoutes);
 
 
-const port = 2000;
+const port = 5210;
 
 app.listen(port, () => {
     console.log(`server running at port ${port}`);
